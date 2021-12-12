@@ -362,3 +362,118 @@ print("더하기 =", cal_plus)
 더하기 = 10
 ```
 
+
+
+### 1-10 Conditionals part One
+
+
+
+- If, else 조건문
+
+- ```
+  def plus(a,b) :
+    if type(b) is int or type(b) is float :
+      return a+b
+  
+    else :
+      return None
+      
+  # return 은 반드시 안쪽에 위치해야 함.
+  
+  plus(12, 3.14)
+  
+  15.14
+  
+  ```
+
+
+
+### 1-11 if else and or 
+
+- ```
+  #  Elif 문 사용 가능. == 기호 
+  
+  def age_check(age):
+    print(f'you are {age}')
+    if age < 18:
+      print('you can drink')
+    elif age == 18 or age == 19:
+      print('you are new to this')
+    elif age > 20 and age < 25 :
+      print('you are still kind of young')
+    else :
+      print('enjoy your drink')
+  
+  
+  age_check(29)
+  ```
+
+
+
+### 1-12 for in
+
+- 뭔가를 순차적으로 정리해야 할때 'for' 사용
+- for 은 정말 많이 사용 됨.
+- for 문은 'string', 'tuple' 또는 list 같이 배열의 요소를 순차적으로 가리킴.
+
+```
+days = ('Mon', 'Tue', 'Wed', 'Thu', 'Fri')
+
+
+# x는 변수 이름, 현재 작업하는 item 에 따라 값이 변함.
+# day 이 변수가 만들어지는 것은 for 문이 실행될때 발생함 
+
+for day in days :
+  if day is 'Wed':     # for loop 를 중단하고 싶다면...     
+    break
+  else:
+    print(day)
+
+
+Mon
+Tue
+```
+
+```
+# 'string' 도 배열(sequence)
+
+for Lee in 'apple':
+  print(Lee)
+  
+a
+p
+p
+l
+e
+```
+
+
+
+### 1-13. Modules
+
+- 파이썬에서는 다양한 모듈이 내장 되어 있음.
+- 프로그램에서 import 하여 사용할 수 있음
+- 모듈을 모두 가져오는 방법도 있지만 특정함수만 가져올 수도 있음. from 사용
+
+```
+import math     # ceil 올림, fabs 절대값
+print(math.ceil(1.2))
+print(math.fabs(-1.2))
+
+2
+1.2
+```
+
+```
+from math import ceil, fsum   # 특정함수만 불러오고 싶을때 from 사용
+
+print(ceil(1.2))
+print(fsum([1,2,3,4,5,6,7]))
+
+2
+28.0
+```
+
+
+
+### 2.0 What is Web Scrapping
