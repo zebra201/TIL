@@ -476,4 +476,13 @@ print(fsum([1,2,3,4,5,6,7]))
 
 
 
-### 2.0 What is Web Scrapping
+### 2-0 What is Web Scrapping
+
+- Url 로부터 제목과 상단 첫 이미지를 가져오는 것(원하는 정보를 추출하는것)을 Scraping 이라고 함.
+- 여러 홈페이지에서 제품을 색인하거나 영화 정보등을 비교
+
+
+
+### 2-1 What are We Building
+
+- 특정 홈페이지에서 자료를 추출하여 엑셀에 정리
