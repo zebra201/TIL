@@ -640,25 +640,29 @@ winter
 
 \# 0이 입력되면 더 이상 입력을 받지 않아도 됨.
 
-#input 은 모든 입력을 문자열 형태로 반환 (LF, 뉴라인 까지 입력을 받음)
 
 
+a=input().split()
 
-```
-while True :
-  n=int(input())
-  if n !=0:
-    print(n)
-  else:
-    break
-1
-1
-10
-10
-0
-```
+for x in a:
 
+ if int(x)==0:
 
+  break
+
+ else:
+
+  print(x)
+
+2 4 6 8 0 4 2
+
+2
+
+4
+
+6
+
+8
 
 
 
@@ -690,10 +694,6 @@ while True:
 
 
 
-### ''반복문과+리스트 ''를 얼마나 잘 다룰것인가? (코딩 테스트 중요)
-
-
-
 #6073 : [기초-반복실행구조] 정수 1개 입력받아 카운트다운 출력하기2(py) 해결
 
 a=int(input())
@@ -720,19 +720,6 @@ while True:
 
 0
 
-```
-#6073 다른 풀이
-n=int(input())
-while True:
-  if n>=0:
-    print(n)
-    n=n-1   # n -=1
-  else:
-    break
-```
-
-
-
 
 
 \#6074 : [기초-반복실행구조] 문자 1개 입력받아 알파벳 출력하기(설명)(py)
@@ -752,42 +739,6 @@ while b<=c:
 f
 
 a b c d e f 
-
-
-
-```
-#6074
-#n=input()
-#n=ord(n)
-
-#print(n)
-#print(chr(n))
-
-n=ord(input())
-for ch in range(97, n+1):
-  print(chr(ch))
-f
-a
-b
-c
-d
-e
-f
-```
-
-
-
-```
-
-n=ord(input())
-for ch in range(97, n+1):
-  print(chr(ch), end=' ' )
-
-f
-a b c d e f
-```
-
-
 
 
 
@@ -817,15 +768,6 @@ while i<=a:
 
 5
 
-```
-#6075 2
-# while 의 경우 for을 사용할 수 없겠다 싶으면 while 사용
-n = int(input())
-for i in range(n+1):
-  print(i)
-
-```
-
 
 
 \#6076 : [기초-반복실행구조] 정수 1개 입력받아 그 수까지 출력하기2(설명)(py)
@@ -853,9 +795,8 @@ for i in range(a+1):
 ## 파이썬에서 for, while 의 차이점
 
 - for 
-  - 이터레이블(반복가능한 자료) 객체에 대해서 반복적인 연산이 가능
+  - 이터레이블 객체에 대해서 반복적인 연산이 가능
   - 반드시 이터레이블 객체가 있어야 합니다.
-  - while 의 경우 for을 사용할 수 없겠다 싶으면 while 사용
 - while
   - 이터레이블이 아닌 경우에 반복이 필요하다면 사용
 
