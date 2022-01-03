@@ -603,3 +603,223 @@ def createTodo( request ):
 ![image-20211223164728996](git-15-django.assets/image-20211223164728996.png)
 
 - 404 not found -> 존재하지 않는 페이지 -> urls.pyu 파일을 확인할 필요가 있음.
+
+
+
+Microsoft Windows [Version 10.0.19042.1415]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ZebRa\workspace\testBoard>conda activate multicampus
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>python manage.py dbshell
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite> .tables
+sqlite> .tables;
+Error: unknown command or invalid arguments:  "tables;". Enter ".help" for help
+sqlite> .table
+sqlite> ^Z     
+
+Traceback (most recent call last):
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\site-packages\django\core\management\commands\dbshell.py", line 26, in handle
+    connection.client.runshell(options['parameters'])
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\site-packages\django\db\backends\base\client.py", line 25, in runshell
+    subprocess.run(args, env=env, check=True)
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['sqlite3', WindowsPath('C:/Users/ZebRa/workspace/testBoard/db.sqlite3')]' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ZebRa\workspace\testBoard\manage.py", line 22, in <module>
+    main()
+  File "C:\Users\ZebRa\workspace\testBoard\manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\site-packages\django\core\management\__init__.py", line 425, in execute_from_command_line
+    utility.execute()
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\site-packages\django\core\management\__init__.py", line 419, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\site-packages\django\core\management\base.py", line 373, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\site-packages\django\core\management\base.py", line 417, in execute
+    output = self.handle(*args, **options)
+  File "C:\Users\ZebRa\.conda\envs\multicampus\lib\site-packages\django\core\management\commands\dbshell.py", line 39, in handle
+    ' '.join(e.cmd),
+TypeError: sequence item 1: expected str instance, WindowsPath found
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 6EB9-1C4B
+
+ C:\Users\ZebRa\workspace\testBoard 디렉터리
+
+2021-12-28 화  오전 09:39    <DIR>          .
+2021-12-28 화  오전 09:39    <DIR>          ..
+2021-12-28 화  오전 09:37    <DIR>          board
+2021-12-28 화  오전 09:37                 0 db.sqlite3
+2021-12-28 화  오전 09:29               687 manage.py
+2021-12-28 화  오전 09:40    <DIR>          static
+2021-12-28 화  오전 09:30    <DIR>          testBoard
+               2개 파일                 687 바이트
+               5개 디렉터리  73,689,649,152 바이트 남음
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>python manage.py makemigrations  
+Migrations for 'board':
+  board\migrations\0001_initial.py
+    - Create model board
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>python manage.py migrate       
+Operations to perform:
+  Apply all migrations: admin, auth, board, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying board.0001_initial... OK
+  Applying sessions.0001_initial... OK
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>python manage.py dbshell        
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite> .tables
+auth_group                  board_board
+auth_group_permissions      django_admin_log
+auth_permission             django_content_type
+auth_user                   django_migrations
+auth_user_groups            django_session
+auth_user_user_permissions
+sqlite> select * from board_board;
+sqlite> ^Z
+
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>python manage.py shell  
+Python 3.10.0 | packaged by conda-forge | (default, Nov 10 2021, 13:20:59) [MSC v.1916 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> import datetime
+>>> from board.models import board
+>>> b = Board( createDate=datetime.date.today(), writer='글 작성자', subject='글 제목', content='글 내용')
+>>> Traceback (most recent call last):
+>>> File "<console>", line 1, in <module>
+>>> NameError: name 'Board' is not defined
+>>> b = board( createDate=datetime.date.today(), writer='글 작성자', subject='글 제목', content='글 내용') 
+>>> b.save()
+>>> board.objects.all()
+>>> <QuerySet [<board: board object (1)>]>
+>>> for a in board:
+>>> ...     print(a.subject())
+>>> ... 
+>>> Traceback (most recent call last):
+>>> File "<console>", line 1, in <module>
+>>> TypeError: 'ModelBase' object is not iterable
+>>> for a in board:    ())
+>>> ...     print(a.subject)  
+>>> ... 
+>>> Traceback (most recent call last):
+>>> File "<console>", line 1, in <module>
+>>> TypeError: 'ModelBase' object is not iterable
+>>> ^Z
+
+now exiting InteractiveConsole...
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>python manage.py dbshell
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite> select * from board_board;
+1|2021-12-28|글 작성자|글 제목|글 내용
+sqlite> ^Z
+
+
+(multicampus) C:\Users\ZebRa\workspace\testBoard>python manage.py shell          
+Python 3.10.0 | packaged by conda-forge | (default, Nov 10 2021, 13:20:59) [MSC v.1916 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> import datetime
+>>> from board.models import board
+>>> for b in board.objects.all():
+>>> ...     print(b.subject)
+>>> ... 
+>>> 글 제목
+>>> ^Z                  
+
+now exiting InteractiveConsole...
+
+
+
+
+
+![캡처](git-15-django.assets/캡처.JPG)
+
+```django
+conda activate multicampus
+
+python manage.py runserver
+
+from . import views
+from .models import board
+from django.urls import reverse
+
+
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def create(request):
+    # return HttpResponse('게시글을 생성합니다')
+    new = board(
+        createDate = request.POST['createDate'],
+        writer = request.POST['user'],
+        subject = request.POST['subject'],
+        content = request.POST['content'],
+    )
+    new.save()
+    
+    return HttpResponseRedirect(reverse('list'))
+
+
+
+urlpatterns = [ 
+    path('', views.index, name='list')  # name [list] 속성을 부여, redirect 시 list로 돌아옴
+
+
+
+# dbshell 로 보드에 입력된 db 확인 가능
+python manage.py dbshell
+	select * from board_board
+	 ;
+	 
+	 
+	 
+```
+
+![image-20211228175849544](git-15-django.assets/image-20211228175849544.png)
+
+
+
+form 태그의 동작 방식
+form 태그 내의 버튼 태그나 혹은 input태그 의 타입 중 submit인 타입의 버튼이 클릭되면(이벤트 발생)
+form태그의 attribute인 action에 지정된 경로의 url로 이동요청이 시작됨.
+
+method에도 요청 방식을 기입함.
+
+form 태그 내 input 의 name 어트리뷰트가 백엔드 (파이썬, 장고)에서 변수이름으로 사용됨.
+delList2 = value값이 할당
+-> delList2 = board.id값
+
+
+
