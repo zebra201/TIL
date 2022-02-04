@@ -315,3 +315,254 @@ print(r_result)
 
 ## 1-9 코드 챌린지 - 7 function
 
+- 계산기 만들기
+
+
+
+## 1-10 Conditionals Part One
+
+```
+def plus(a,b):
+  if type(b) is int or type(b) is float : 
+    return a + b
+  else :
+    return None
+
+print(plus(12, 1.2))
+```
+
+- if 조건
+
+
+
+## 1-11. if else and or
+
+- and, or, not
+
+```
+def age_check(age):
+  print(f"you are {age}")
+
+age_check(18)
+
+you are 18
+
+```
+
+
+
+```
+def age_check(age):
+  print(f"you are {age}")
+  if age < 18:
+    print("you cant drink")
+  else:
+    print("enjoy your drink")
+
+age_check(18)
+```
+
+
+
+```
+def age_check(age):
+  print(f"you are {age}")
+  if age < 18:
+    print("you cant drink")
+  elif age == 18:
+    print("your are new to this!")
+  else:
+    print("enjoy your drink")
+
+age_check(18)
+```
+
+
+
+````
+def age_check(age):
+  print(f"you are {age}")
+  if age < 18:
+    print("you cant drink")
+  elif age == 18:                     # elif = else if
+    print("your are new to this!")
+  elif age >20 and age < 25 :         # and 는 둘다 true 여야 함, or는 둘 중 하나
+    print("you are still kind of young")
+  else:
+    print("enjoy your drink")
+
+age_check(23)
+````
+
+
+
+## 1-12. for in
+
+- 
+
+```
+days = ("Mon", "Tue", "Wed", "Thu", "Fri")
+
+# 각 요일을 출력하되 한 줄씩 출력하려면 for 을 사용해야함
+# for 을 사용하면 각 아이템을 순서대로, 하나씩 작업할 수 있음
+
+for x in days:    # x 는 변수값은 Mon, Tue ~ Fri 값, 계속 값이 변함, 중요한 것은 in 뒤의 days  	print(x)
+
+
+Mon
+Tue
+Wed
+Thu
+Fri
+```
+
+
+
+```
+days = ("Mon", "Tue", "Wed", "Thu", "Fri")
+
+# 각 요일을 출력하되 한 줄씩 출력하려면 for 을 사용해야함
+# for 을 사용하면 각 아이템을 순서대로, 하나씩 작업할 수 있음
+
+for x in [1,2,3,4,5]:    # 중요한 것은 in 뒤의 days
+  print(x)
+
+1
+2
+3
+4
+5
+
+```
+
+
+
+````
+days = ("Mon", "Tue", "Wed", "Thu", "Fri")
+
+for x in days:
+  if x is "Wed":
+    break
+  else :
+    print(x)
+
+Mon
+Tue
+
+````
+
+- string 도 배열(sequence)
+
+
+
+
+
+### 1-13 Modules
+
+- 파이썬에서는 모듈이 존재하며 프로그램에 import 하여 사용 가능
+
+```
+import math
+
+print(math.ceil(1.2))    # ceil -> 값을 반올림해줌. 그전에 math 모듈을 import 해야함
+print(math.fabs(-1.2))   # fabs -> 절대값
+
+2
+1.2
+```
+
+
+
+- import 시 전부 할 필요 없음. 필요한 것만 임포트 가능
+
+~~~
+from math import ceil, fsum
+
+print(ceil(1.2))
+print(fsum([1,2,3,4,5,6,7]))
+
+2
+28.0
+~~~
+
+
+
+- fsum 의 이름을 변경할 수도 있음
+
+```
+from math import fsum as Lee_sum
+
+print(Lee_sum([1,2,3,4,5,6,7]))
+
+28.0
+
+```
+
+
+
+- 다른 파일에서 정의된 기능을 불러와서 사용하는 것도 가능
+
+```
+# calculator 파일
+
+def plus (a,b):
+  return a+b
+def minus(a,b):
+  return a-b	
+
+
+# 다른 파일에서 import 해서 사용 가능.(.py 없이 파일명만 붙여서 사용)
+
+from calculator import plus, minus
+
+print(plus(1,2))
+print(minus(1,2))
+
+
+```
+
+
+
+
+
+## 2.0 What is Web Scrapping?
+
+- 웹 상의 데이터를 추출하는 것을 의미함
+- 구글에서도 검색시 다른 홈페이지에서 스크래핑(추출)하여 보여줌.
+- 여러 홈페이지에서 일정 시간에 추출 기능을 실행하여 중요한 정보를 웹사이트로 가져와서 이메일로 보낼 수 있음.
+
+
+
+## 2.1 What are we Building?
+
+- 프로젝트에서는 파이썬 관련 일자리를 찾는 다면? indeed or stackoverflow 에서 페이지를 넘겨보면 요약 정보를 볼 수 있고 클릭 시 디테일 정보가 나옴.
+- 스크래퍼를 만들어서 두 홈페이지에서 들어간 뒤 모든 페이지의 일자리를 추출할 예정
+- 홈페이지에서는 모든 정보를 보여주지 않음.
+- 이 후 일자리를 엑셀 시트로 옮길 예정.(한줄 한줄 표현될 예정)
+
+
+
+## 2.2 Navigating with Python
+
+- 사용전 requests 함수를 불러와야함 (import requests)
+
+```
+HTML 가져오기
+
+import requests
+
+indeed_result = requests.get("https://www.indeed.com/jobs?as_and=python&limit=50")
+                             
+print(indeed_result.text)
+```
+
+- HTML 을 전부 불러온 뒤 원하느 정보를 가져와야 함. (그중에서 페이지를 불러오자)
+- 수동으로 하면 느리므로 BeautifulSoup 사용예정(아주 유용한 패키지임)
+- 최대 페이지를 코드에 알려줘서 페이지 20까지 갈 수 있도록 할 예정.
+
+
+
+## 2.3 Extracting Indeed Pages
+
+
+
