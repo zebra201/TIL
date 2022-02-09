@@ -1478,3 +1478,267 @@ OBS	NAME	ID	DATE	TEST	Value
 
 
 
+
+
+
+
+------------------------------------------------------------------------------------
+
+2022-02-07
+
+### www.ncs.go.kr
+
+ncs 및 학습모듈 검색 -> 20.정보통신 -> 정보기술 -> 에서 PDF 파일로 공부하면 좋음.
+
+
+
+## 빅데이터 - 스칼라 - 스파크(Wikidocs)
+
+
+
+- 스파크 느려진 하둡 플래폼을 도와주는 역할
+- 스파크 sql, 
+- 스트리밍,
+- 머신러닝 등이 있어 사용하기 위함
+- 그래픽 기반
+
+![image-20220207110759718](git-19-Data.assets/image-20220207110759718.png)
+
+### Spark Streaming
+
+스파크 스트리밍은 실시간 데이터 스트림을 처리하는 컴포넌트 입니다. 스트림 데이터를 작은 사이즈로 쪼개어 RDD 처럼 처리합니다.
+
+
+
+### 4.스파크 애플리케이션
+
+스파크 애플리케이션은 스칼라, 자바, 파이썬, R 로 구현할 수 있습니다. 각 언어로 스파크 SQL을 실행할 수도 있습니다. 스파크 애플리케이션은 jar 파일로 묶어서 실행하거나, REPL 환경에서 실행할 수 있습니다.
+
+### spark-shell 환경
+
+스칼라를 이용한 처리는 `spark-shell` 을 이용합니다.
+
+
+
+### 4-2.RDD, 데이타프레임, 데이타셋
+
+
+
+### 1. 디스트림(DStream)
+
+
+
+-------------------------------------------------
+
+### 스파크를 다루는 기술 (교재)
+
+https://www.vagrantup.com/downloads
+
+- Vagrant(베이그런트) : 손쉽게 이식 가능한 개발 환경을 구성할 수 있는 소프트웨어
+
+- RDD-> DataFrame -> DataSet
+
+- 교재 : 스파크를 다루는 기술
+
+- ```
+  git clone https://github.com/spark-in-action/first-edition
+  ```
+
+- ```
+  spark
+  spark
+  spark-shell
+  ```
+
+  ```
+  ```
+
+  
+
+- 
+
+- ```
+  $ spark-shell
+  
+  #transByCustRDD 만들기
+  scala> val tranFile = sc.textFile("first-edition/ch04/ch04_data_transactions.txt")
+  scala> val tranData = tranFile.map(_.split("#"))
+  
+  scala> val products = sc.textFile("/Users/ssimda/Vagrant_New/ch04_data_products.txt").
+      map(line => line.split("#")).
+      map(p => (p(0).toInt, p))
+      
+  scala> val totalsAndProds = totalsByProd.join(products)
+  scala> totalsAndProds.first()
+  scala> val totalsWithMissingProds = totalsByProd.rightOuterJoin(products)
+  scala> val missingProds = totalsWithMissingProds.filter(x => x._2._1 == None).map(x => x._2._2)
+  scala> missingProds.foreach(p => println(p.mkString(", ")))
+  ```
+
+- ```
+  $ spark-shell
+  
+  #transByCustRDD 만들기
+  scala> val tranFile = sc.textFile("first-edition/ch04/ch04_data_transactions.txt")
+  scala> val tranData = tranFile.map(_.split("#"))
+  
+  scala> val transByProd = tranData.map(tran => (tran(3).toInt, tran))
+  scala> val totalsByProd = transByProd.mapValues(t => t(5).toDouble).reduceByKey{case(tot1, tot2) => tot1 + tot2}
+  
+  scala> val products = sc.textFile("firt-edition/ch04/ch04_data_products.txt").
+      map(line => line.split("#")).
+      map(p => (p(0).toInt, p))
+      
+  val transByProd = tranData.map(tran => (tran(3).toInt, tran))
+  val totalsByProd = transByProd.mapValues(t => t(5).toDouble).
+     reduceByKey{case(tot1, tot2) => tot1 + tot2}
+      
+  scala> val totalsAndProds = totalsByProd.join(products)
+  scala> totalsAndProds.first()
+  scala> val totalsWithMissingProds = totalsByProd.rightOuterJoin(products)
+  scala> val missingProds = totalsWithMissingProds.filter(x => x._2._1 == None).map(x => x._2._2)
+  scala> missingProds.foreach(p => println(p.mkString(", ")))
+  ```
+
+- ```
+  scala> val tranFile = sc.textFile("first-edition/ch04/ch04_data_transactions.txt")
+  scala> val tranData = tranFile.map(_.split("#"))
+  scala> val transByProd = tranData.map(tran => (tran(3).toInt, tran))
+  scala> val totalsByProd = transByProd.mapValues(t => t(5).toDouble).reduceByKey{case(tot1, tot2) => tot1 + tot2}
+  
+  scala> val products = sc.textFile("first-edition/ch04/ch04_data_products.txt").
+      map(line => line.split("#")).
+      map(p => (p(0).toInt, p))
+      
+  scala> val totalsAndProds = totalsByProd.join(products)
+  scala> totalsAndProds.first()
+  scala> val totalsWithMissingProds = totalsByProd.rightOuterJoin(products)
+  scala> val missingProds = totalsWithMissingProds.filter(x => x._2._1 == None).map(x => x._2._2)
+  scala> missingProds.foreach(p => println(p.mkString(", ")))
+  ```
+
+  #### 데이터 저장 및 불러오기(스칼라)
+
+- ```
+  :save ch05_practice
+  :load ch05_practice
+  ```
+
+
+
+#### 리눅스 환경 명령어
+
+````
+cat 파일명 : 단순 불러오기 (읽기만 가능)
+vim 파일명 : 수정 가능한 불러오기
+
+i 를 눌러서 수정 가능 모드
+insert 키를 통해 수정모드 변경
+
+esc 를 누른 후
+:q!  저장하지 않고 나가기
+
+:wq! 저장하고 나가기
+````
+
+
+
+#### 페이지 232
+
+```scala
+import org.apache.spark._
+import org.apache.spark.streaming._
+
+scala> val ssc = new StreamingContext(sc, Seconds(5))
+val filestream = ssc.textFileStream("/home/spark/ch06input")
+```
+
+#### 스파크 마스터 권한
+
+```
+spark-shell --master local[*]
+```
+
+
+
+
+
+- 데이터 파싱
+- 
+
+
+
+----------------------------------------------------------------
+
+- 머신러닝 관련 알고리즘 하나 해볼것.(스파크 스트리밍 사용)
+
+
+
+## 스파크를 다루는 기술 7.2 (머신러닝)
+
+#### 7.2.1 로컬 벡터 생성
+
+```scala
+# 로컬 벡터 생성
+
+scala> import org.apache.spark.mllib.linalg.{Vectors,Vector}
+import org.apache.spark.mllib.linalg.{Vectors, Vector}
+
+scala> val dv1:Vector = Vectors.dense(5.0,6.0,7.0,8.0)
+dv1: org.apache.spark.mllib.linalg.Vector = [5.0,6.0,7.0,8.0]
+
+scala> val dv2:Vector = Vectors.dense(Array(5.0,6.0,7.0,8.0))
+dv2: org.apache.spark.mllib.linalg.Vector = [5.0,6.0,7.0,8.0]
+
+scala> val sv:Vector = Vectors.sparse(4, Array(0,1,2,3), Array(5.0,6.0,7.0,8.0))
+sv: org.apache.spark.mllib.linalg.Vector = (4,[0,1,2,3],[5.0,6.0,7.0,8.0])
+
+scala> dv2(2)
+res0: Double = 7.0
+
+scala> dv1.size
+res1: Int = 4
+
+scala> dv2.toArray
+res2: Array[Double] = Array(5.0, 6.0, 7.0, 8.0)
+
+
+
+# 로컬 벡터의 선형 대수 연산
+scala> import org.apache.spark.mllib.linalg.{DenseVector, SparseVector}
+import org.apache.spark.mllib.linalg.{DenseVector, SparseVector}
+
+scala> import breeze.linalg.{DenseVector => BDV,SparseVector => BSV,Vector => BV}
+import breeze.linalg.{DenseVector=>BDV, SparseVector=>BSV, Vector=>BV}
+
+scala> def toBreezeV(v:Vector):BV[Double] = v match {
+     |     case dv:DenseVector => new BDV(dv.values)
+     |     case sv:SparseVector => new BSV(sv.indices, sv.values, sv.size)
+     | }
+toBreezeV: (v: org.apache.spark.mllib.linalg.Vector)breeze.linalg.Vector[Double]
+
+# BreezeV 함수와 Breeze 라이브러리를 사용해 벡터의 덧셈이나 내적을 계산할 수 있다.
+scala> toBreezeV(dv1)+toBreezeV(dv2)
+res6: breeze.linalg.Vector[Double] = DenseVector(10.0, 12.0, 14.0, 16.0)
+
+scala> toBreezeV(dv1).dot(toBreezeV(dv2))
+res7: Double = 174.0
+
+
+
+# 로컬 밀집 행렬 생성
+import org.apache.spark.mllib.linalg.{DenseVector, SparseVector}
+import breeze.linalg.{DenseVector => BDV,SparseVector => BSV,Vector => BV}
+def toBreezeV(v:Vector):BV[Double] = v match {
+    case dv:DenseVector => new BDV(dv.values)
+    case sv:SparseVector => new BSV(sv.indices, sv.values, sv.size)
+}
+
+
+```
+
+
+
+
+
+![image-20220209091613510](git-19-Data.assets/image-20220209091613510.png)
