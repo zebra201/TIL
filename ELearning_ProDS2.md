@@ -67,3 +67,42 @@
 
 ![image-20220205135543461](ELearning_ProDS2.assets/image-20220205135543461.png)
 
+## 2. 베이즈 정리
+
+분할, 전확률 공식, 베이즈정리
+
+- 베이즈 정리 : 데이터라는 조건이 주어졌을 때의 조건부확률을 구하는 공식, 결과가 주어있을 때 원인인 확률
+
+![image-20220216143521152](ELearning_ProDS2.assets/image-20220216143521152.png)
+
+- 표본공간의 분할 : 
+
+![image-20220216143604687](ELearning_ProDS2.assets/image-20220216143604687.png)
+
+- S : 전체표본분할, B1,B2,B3 = 중복이 없는 원인(동시발생하지 않음 = 상호배반)
+
+![image-20220216143626459](ELearning_ProDS2.assets/image-20220216143626459.png)
+
+- 전확률공식 
+
+![image-20220216144121488](ELearning_ProDS2.assets/image-20220216144121488.png)
+
+- A의 확률은 A와 B끼리 각각 발생하는 교집합의 합과 같다.(역시 상호배반)
+- A와 B의 곱사건의 확률의 합 = A
+
+![image-20220216144727282](ELearning_ProDS2.assets/image-20220216144727282.png)
+
+
+
+- 예시
+
+![image-20220216145414767](ELearning_ProDS2.assets/image-20220216145414767.png)
+
+- 결과가 주어졌을 때, 원인을 환산하는 계산
+- 답 : 0.3703
+
+![image-20220216145513274](ELearning_ProDS2.assets/image-20220216145513274.png)
+
+![image-20220216150300338](ELearning_ProDS2.assets/image-20220216150300338.png)
+
+![image-20220216150308615](ELearning_ProDS2.assets/image-20220216150308615.png)
