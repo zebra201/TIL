@@ -1,8 +1,6 @@
 # AWS 서버 구축
 
-- 두 번째 프로젝트 멤버
 
-![image-20220210160711540](git-20-AWS.assets/image-20220210160711540.png)
 
 ![image-20220209115202537](git-20-AWS.assets/image-20220209115202537.png)
 
@@ -13,13 +11,13 @@
 - 서울 서버의 경우 과부하가 심하여 <u>**도쿄 리전 사용**</u>(실습이 아직 어려움)
 - 서버 운영시간은 평일 ~18:30, 주말 추석 연휴, 멘토링 일정 없는 토요일과 일요일 사용 불가.
 
-- 데이터 엔지니어 코드 : 665820218380
+- 데이터 엔지니어 코드 : 665820218380 / 665820218380
 
-- ID : e-lab30
+- ID : de-e-lab13
 - PW : multi1234
 
 - putty 로그인시, ip, port 을 save 한뒤, auth 경로로 프라이빗키(ppk, 개별 다운로드) 지정 후 로그인
-  - id : lab30 	(패스워드는 필요 없음)
+  - id : lab13 / lab30 	(패스워드는 필요 없음)
 - 인스턴스 시작(자신과 맞는 이름) 후 새로고짐 진행
 
 
@@ -31,17 +29,18 @@ conda info --envs
 conda activate python3 (권장)
 
 # 백그라운드에서 실행 (입력시 port 는 개인번호 입력)
- nohup jupyter-notebook --ip=0.0.0.0 --no-browser --port=8930 &
+nohup jupyter-notebook --ip=0.0.0.0 --no-browser --port=8930 &
 
 # 주피터 주소로 들어가기
  원격접속 쥬피터 노트북 접속 url : http://3.113.137.203:8930
+ https://35.77.144.191:8930/
  
 # 비밀번호 : multi1234!
 ```
 
 - 백그라운드 실행 후 putty 는 종료해도 상관 없음
-- 서버 접속 IP (putty) : 3.113.137.201
-- 원격접속 쥬피터 노트북 접속 url : http://3.113.137.203:8930
+- 서버 접속 IP (putty) : 3.113.137.203
+- 원격접속 쥬피터 노트북 접속 url : http://3.113.137.203:8913 / https://35.77.144.191:8930/
 - python --version
 - conda activate python3
 - conda create -n test python=3.6 jupyter tensorflow
@@ -52,6 +51,14 @@ conda activate python3 (권장)
 
 import pandas as pd
 ```
+
+```
+---------------------------------------------------------------
+mysql -u user01 -p
+---------------------------------------------------------------
+```
+
+
 
 ![image-20220209151444046](git-20-AWS.assets/image-20220209151444046.png)
 
@@ -560,4 +567,8 @@ from sklearn.metrics import accuracy_score
 print('예측 정확도: {0:.4f}'.format(accuracy_score(y_test,pred)))
 예측 정확도: 0.9333
 ```
+
+
+
+## 주피터 노트북 mysql 연결
 
