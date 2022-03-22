@@ -40,7 +40,7 @@ nohup jupyter-notebook --ip=0.0.0.0 --no-browser --port=8930 &
 
 - 백그라운드 실행 후 putty 는 종료해도 상관 없음
 - 서버 접속 IP (putty) : 3.113.137.203
-- 원격접속 쥬피터 노트북 접속 url : http://3.113.137.203:8913 / https://35.77.144.191:8930/
+- 원격접속 쥬피터 노트북 접속 url : http://3.113.137.203:8913 / http://35.77.144.191:8930/
 - python --version
 - conda activate python3
 - conda create -n test python=3.6 jupyter tensorflow
