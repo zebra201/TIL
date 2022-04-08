@@ -8,9 +8,9 @@
 - NGINX 가 채택한 Event -driven model, 이벤트 기반 구조, 아파치 구조와 큰 차이.
 
 - Django Rest API ?
-- gunicorn : websocket (NGINX <-> Django Rest API 를 연결해줌)
+- gunicorn : websocket (웹서버로 가야되는 게이트웨이) (NGINX <-> Django Rest API 를 연결해줌)
 
-- daphne : websocket 서버 ( NGINX <-> Django Channels 를 연결해줌)
+- daphne : websocket(웹서버로 가야되는 게이트 웨이) ( NGINX <-> Django Channels 를 연결해줌)
 - 장고채널 < ---- Json -----> redis (메모리기반)
 - 
 - redis ,mysql
